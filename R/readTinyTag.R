@@ -7,7 +7,7 @@ readTinyTag <- function(txt.path) {
         file = txt.path,
         delim = "\t",
         col_names = FALSE,
-        col_types = cols(),
+        col_types = readr::cols(),
         skip = 5) %>%
         select(-1)
     if (ncol(import) == 2) {
@@ -20,8 +20,10 @@ readTinyTag <- function(txt.path) {
     } else {
         stop("More than 3 columns found in tinytag file!")
     }
-
     import %>%
+        mutate(across(Datum & where(is.character), ~ lubridate::parse_date_time(
+            .x,
+            orders = c("dmy_HM")))) %>%
         mutate(Datum = lubridate::round_date(Datum, "5 mins")) %>%
         mutate(RegenX = stringr::str_replace(
             RegenX,
@@ -35,7 +37,6 @@ readTinyTag <- function(txt.path) {
         )) %>%
         mutate(across(where(is.character), as.numeric)) %>%
         data.table::as.data.table()
-
     # Check if following pattern replacement was needed in some cases
     # tt.table[, RegenX := as.numeric(stringr::str_match(RegenX, pattern = "^[0-9]+(?:\\.[0-9]+$)?"))]
 }
