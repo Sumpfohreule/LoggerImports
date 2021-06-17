@@ -1,11 +1,11 @@
 Package: LoggerImports
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Aggregation of import functions for loggers used in the FVA
 Version: 0.2.3
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Lars Isenberg
+Maintainer: Lars Isenberg <lars.isenberg@forst.bwl.de>
+Description: Provides convenience functions to import clear text files of
+    different data loggers.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
