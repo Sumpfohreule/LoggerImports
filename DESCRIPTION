@@ -1,7 +1,7 @@
 Package: LoggerImports
 Type: Package
 Title: Aggregation of import functions for loggers used in the FVA
-Version: 0.2.3
+Version: 0.3.0
 Author: Lars Isenberg
 Maintainer: Lars Isenberg <lars.isenberg@forst.bwl.de>
 Description: Provides convenience functions to import clear text files of
